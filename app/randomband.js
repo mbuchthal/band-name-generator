@@ -1,3 +1,5 @@
+'use strict';
+
 $(function() {
 
   $("#submitWordAdjective").on('submit', function (event) {
@@ -5,7 +7,7 @@ $(function() {
     var userAdjective = $("#user-adjective").val();
     $.post("/adjective", {word: userAdjective}, function() {
       var confirm = response.message + " <em>" + response.confirm + "</em>";
-      $("#res-adjective").html(confirm);
+      $("#res-adjective").html(response.message + " <em>" + response.confirm + "</em>");
     });
   });
 
@@ -14,7 +16,7 @@ $(function() {
     var userNoun = $("#user-noun").val();
     $.post("/noun", {word: userNoun}, function() {
       var confirm = response.message + " <em>" + response.confirm + "</em>";
-      $("#res-noun").html(confirm);
+      $("#res-noun").text(confirm);
     });
   });
 
@@ -23,25 +25,37 @@ $(function() {
     var userVerb = $("#user-verb").val();
     $.post("/verb", {word: userVerb}, function() {
       var confirm = response.message + " <em>" + response.confirm + "</em>";
-      $("#res-verb").html(confirm);
+      $("#res-verb").text(confirm);
     })
   });
 
+  $('#button').on('click', function() {
+    $.get('adjective', function (response) {
+      $("#adjective").text(response.word);
+    });
+    $.get('verb', function (response) {
+      $("#verb").text(response.word);
+    });
+    $.get('noun', function (response) {
+      $("#noun").text(response.word);
+    });
+  });
+
   $('#buttonone').on('click', function() {
-    $.get("/adjective", function (response) {
-      $('#adjective').html(response.word);
+    $.get('adjective', function (response) {
+      $('#adjective').text(response.word);
     });
   })
 
   $('#buttontwo').on('click', function() {
-    $.get("/noun", function (response) {
-      $('#noun').html(response.word);
+    $.get('verb', function (response) {
+      $('#verb').text(response.word);
     });
   })
 
   $('#buttonthree').on('click', function() {
-    $.get("/verb", function (response) {
-      $('#verb').html(response.word);
+    $.get('noun', function (response) {
+      $('#noun').text(response.word);
     });
   })
 
