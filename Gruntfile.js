@@ -4,7 +4,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-jshint");
   grunt.loadNpmTasks("grunt-jscs");
 
-  var srcFiles = ["app/**/*.js", "lib/**/*.js", "server.js"];
+  var srcFiles = ["app/**/*.js", "lib/**/*.js", "server.js", "Gruntfile"];
 
   grunt.initConfig({
     jshint: {
