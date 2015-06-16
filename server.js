@@ -18,7 +18,7 @@ app.use(express.static(__dirname + '/app/'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.get('/', function (req, res) {
+app.get('/', function(req, res) {
   res.sendFile(__dirname + '/app/index.html');
 });
 
@@ -26,32 +26,30 @@ app.listen(port, function() {
   console.log('Server started on port ' + port);
 });
 
-app.post('/adjective', function (req, res) {
+app.post('/adjective', function(req, res) {
   res.json(postWord(req.body.word, adjective));
 });
 
-app.post('/noun', function (req, res) {
+app.post('/noun', function(req, res) {
   res.json(postWord(req.body.word, noun));
 });
 
-app.post('/verb', function (req, res) {
+app.post('/verb', function(req, res) {
   res.json(postWord(req.body.word, verb));
 });
 
-app.get('/adjective', function (req, res) {
+app.get('/adjective', function(req, res) {
   var getAdj = getRandomWord(adjective);
   res.json(getAdj);  // returning a JSON objective
 });
 
-app.get('/noun', function (req, res) {
+app.get('/noun', function(req, res) {
   var getNoun = getRandomWord(noun);
   res.json(getNoun);
 });
 
-app.get('/verb', function (req, res) {
+app.get('/verb', function(req, res) {
   var getVerb = getRandomWord(verb);
   res.json(getVerb);
 });
-
-
 
