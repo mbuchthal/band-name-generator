@@ -27,30 +27,30 @@ app.listen(port, function() {
 });
 
 app.post('/adjective', function (req, res) {
-  adjective[req.body.word] = true;
-  res.json( postWord(req.body.word, adjective));
+  res.json(postWord(req.body.word, adjective));
 });
 
 app.post('/noun', function (req, res) {
-  noun[req.body.word] = true;
-  res.json( postWord(req.body.word, noun));
+  res.json(postWord(req.body.word, noun));
 });
 
 app.post('/verb', function (req, res) {
-  verb[req.body.word] = true;
-  res.json( postWord(req.body.word, verb));
-})
+  res.json(postWord(req.body.word, verb));
+});
 
 app.get('/adjective', function (req, res) {
-  res.json(getRandomWord(adjective));  // returning a JSON objective
+  var getAdj = getRandomWord(adjective);
+  res.json(getAdj);  // returning a JSON objective
 });
 
 app.get('/noun', function (req, res) {
-  res.json(getRandomWord(noun));
+  var getNoun = getRandomWord(noun);
+  res.json(getNoun);
 });
 
 app.get('/verb', function (req, res) {
-  res.json(getRandomWord(verb));
+  var getVerb = getRandomWord(verb);
+  res.json(getVerb);
 });
 
 
